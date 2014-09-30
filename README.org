@@ -1,4 +1,4 @@
-#+TITLE: orgp - A command-line based org-mode presentation tool.
+* orgp - A command-line based org-mode presentation tool
 
 * What is =orgp=
 
@@ -6,7 +6,7 @@
 
 * When to use it
 
-If your team need presentation something in a [[https://wiki.archlinux.org/index.php/GNU_Screen][Screen]], then you can try =orgp= or =mdp=. 
+If your team need to presentation something in a [[https://wiki.archlinux.org/index.php/GNU_Screen][Screen]], then you can try =orgp= or =mdp=. 
 
 =mdp= powered by C while =orgp= powered by Objective-C.
 
@@ -46,10 +46,12 @@ Review sample.org for more details.
 
 * Controls:
 
-h, j, k, l, Cursor keys, Space, Enter, Backspace - next/previous slide
-Home - go to first slide
-End - go to last slide
-1-9 - go to slide n
-q - exit
+#+BEGIN_QUOTE
+- h, j, k, l, Cursor keys, Space, Enter, Backspace - next/previous slide
+- Home - go to first slide
+- End - go to last slide
+- 1-9 - go to slide n
+- q - exit
+#+END_QUOTE
 
 
