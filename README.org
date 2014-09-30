@@ -1,14 +1,16 @@
-* orgp - A command-line based org-mode presentation tool
+#+TITLE: orgp - A command-line based org-mode presentation tool
+#+AUTHOR: Leslie Zhu
+#+DATE: 2014-10-01
 
 * What is =orgp=
 
 =orgp= is a command-line based org-mode presentation tool like [[https://github.com/visit1985/mdp][mdp]].
 
+=mdp= powered by C , and =orgp= powered by Objective-C.
+
 * When to use it
 
 If your team need to presentation something in a [[https://wiki.archlinux.org/index.php/GNU_Screen][Screen]], then you can try =orgp= or =mdp=. 
-
-=mdp= powered by C while =orgp= powered by Objective-C.
 
 =orgp= based on =org-mode=, but it only support simple format rules from org-mode, as it's just a presentation tool.
 
@@ -20,7 +22,7 @@ $ git clone https://github.com/LeslieZhu/orgp.git
 $ cd orgp
 $ make
 $ make install
-$ orgp sample.org
+$ orgp README.org
 #+END_EXAMPLE
 
 
@@ -42,7 +44,7 @@ Supports basic org-mode formating:
   - code
 #+END_QUOTE
 
-Review sample.org for more details.
+Review README.org for more details.
 
 * Controls:
 
