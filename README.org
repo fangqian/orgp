@@ -6,7 +6,7 @@
 
 =orgp= is a command-line based org-mode presentation tool like [[https://github.com/visit1985/mdp][mdp]].
 
-=mdp= powered by C , and =orgp= powered by Objective-C.
+=mdp= powered by C , and =orgp= powered by C++.
 
 * When to use it
 
