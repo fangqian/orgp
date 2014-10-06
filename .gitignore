@@ -16,6 +16,8 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+*~
+*.o
 
 # CocoaPods
 #
@@ -25,3 +27,4 @@ DerivedData
 #
 # Pods/
 orgp.xcworkspace/
+orgp.xcodeproj/
