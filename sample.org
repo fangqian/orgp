@@ -1,18 +1,19 @@
 #+TITLE: orgp - A command-line based org-mode presentation tool
 #+AUTHOR: Leslie Zhu
 #+DATE: 2014-10-01
+#+EMAIL: pythonisland@gmail.com
 
-* What is =orgp=
+* What is orgp
 
-=orgp= is a command-line based org-mode presentation tool like [[https://github.com/visit1985/mdp][mdp]].
+orgp is a command-line based org-mode presentation tool like mdp.
 
-=mdp= powered by C , and =orgp= powered by C++.
+mdp powered by C , and orgp powered by C++.
 
 * When to use it
 
-If your team need to presentation something in a [[https://wiki.archlinux.org/index.php/GNU_Screen][Screen]], then you can try =orgp= or =mdp=. 
+If your team need to presentation something in a Screen, then you can try orgp or mdp. 
 
-=orgp= based on =org-mode=, but it only support simple format rules from org-mode, as it's just a presentation tool.
+orgp based on org-mode, but it only support simple format rules from org-mode, as it's just a presentation tool.
 
 * How to get started
 
