@@ -35,26 +35,35 @@ namespace orgp{
         Page *page=new Page();
         
         while (src.good()) {
+            
             getline(src, line);
+            
             line_count++;
             
-            if(line.find_first_of("#+TITLE") == 0){
-                org->setTitle(line);
+            if(line.find("#+TITLE") == 0 or line.find("#+title") == 0){
+                org->setTitle(line.substr(line.find(":")+1));
             }
-            else if(line.find_first_of("#+AUTHOR") == 0){
-                org->setAuthor(line);
+            else if(line.find("#+AUTHOR") == 0 or line.find("#+author") == 0){
+                org->setAuthor(line.substr(line.find(":")+1));
             }
-            else if(line.find_first_of("#+EMAIL") == 0){
-                org->setEmail(line);
+            else if(line.find("#+EMAIL") == 0 or line.find("#+email") == 0){
+                org->setEmail(line.substr(line.find(":")+1));
             }
-            else if(line.find_first_of("#+DATE") == 0){
-                org->setDate(line);
+            else if(line.find("#+DATE") == 0 or line.find("#+date") == 0){
+                org->setDate(line.substr(line.find(":")+1));
             }
+            else if(line.find("#+BEGIN") == 0 or
+                    line.find("#+begin") == 0 or
+                    line.find("#+END") == 0 or
+                    line.find("#+end") == 0){
+                continue;
+            }
+            else if(line.find("* ") == 0){
             
-            else if(line.find_first_of("*") == 0){
                 
                 if(page_num > 0){
                     org->add_page(page);
+                    //page->view();
                 }
                 
                 page_num++;
@@ -66,6 +75,16 @@ namespace orgp{
             }
         }
         
+        org->add_page(page);
+        //page->view();
+        
+    }
+    
+    std::string Scan::cleanup(std::string line){
+        
+        
+        
+        return line;
     }
     
     Scan::~Scan(){

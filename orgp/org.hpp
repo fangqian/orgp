@@ -12,6 +12,10 @@
 #include <stdio.h>
 #include <iostream>
 #include <vector>
+#include <ncurses.h>
+#include <cstdlib>
+#include <string>
+#include <sstream>
 
 namespace orgp{
 
@@ -32,7 +36,13 @@ namespace orgp{
         
         void add_page(Page *page);
         
-        void display(const std::string prompt);
+        void display();
+        void homepage();
+        void eachPage(Page *page);
+        
+        std::string num2str(double i);
+        
+    
         
         std::string author();
         void setAuthor(const std::string author);
@@ -48,6 +58,9 @@ namespace orgp{
         
         int pages();
         void setPages(const int pages);
+        
+        
+        void inline printw( const int cur_line,const int cur_col,std::string msg );
         
     private:
         std::string _author;
@@ -91,6 +104,10 @@ namespace orgp{
         Page *prev;
         Page *next;
     };
+    
+    
+    
+    
 }
 
 #endif /* defined(__orgp__org__) */

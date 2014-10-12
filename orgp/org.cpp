@@ -6,6 +6,7 @@
 //  Copyright (c) 2014年 LeslieZhu. All rights reserved.
 //
 
+
 #include "org.hpp"
 //#include <iostream>
 
@@ -47,6 +48,7 @@ namespace orgp{
       
         p->next = page;
         page->next = this->end;
+        page->prev = p;
         
         this->_pages += 1;
 
@@ -54,13 +56,136 @@ namespace orgp{
         
     }
     
-    void Org::display(const std::string prompt){
-        std::cout << prompt << "\n";
-        for(Page *p = this->begin->next; p != NULL; p = p->next){
-
-            p->view();
+    std::string Org::num2str(double i) {
+        std::stringstream ss;
+        ss << i;
+        return ss.str();
+    }
+    
+    
+    void inline Org::printw( const int cur_line,const int cur_col,std::string msg ){
+        mvprintw(cur_line, cur_col, "%s\n", msg.c_str());
+    }
+    
+    void Org::homepage(){
+        int cur_line = 1;
+        attron(A_BOLD);
+        if (this->title().length() > 0){
+            this->printw(cur_line,0,"Title: "+this->title());
+            cur_line++;
         }
         
+        if (this->author().length() > 0){
+            this->printw(cur_line,0, "Author:"+this->author());
+            cur_line++;
+        }
+        
+        if (this->email().length() > 0){
+            this->printw(cur_line,0,"Email:"+this->email());
+            cur_line++;
+        }
+        
+        if (this->date().length() > 0){
+            this->printw(cur_line,0,"Date:"+this->date());
+            cur_line++;
+        }
+        attroff(A_BOLD);
+        
+        
+        
+    }
+    
+    void Org::eachPage(Page *p){
+        int cur_line;
+        if ((p->section()).length() > 0){
+            attron(A_BOLD);
+            this->printw(2,0, p->section());
+            attroff(A_BOLD);
+            this->printw(4,0, "------------------------------------");
+        }
+        
+        refresh();
+        
+        cur_line = 5;
+        std::vector<std::string>::iterator j;
+        
+        for(j=p->_content.begin();j != p->_content.end(); ++j){
+            this->printw(cur_line,0, *j);
+            cur_line++;
+            refresh();
+            
+        }
+    }
+    
+    void Org::display(){
+        
+        int ch;
+        int row,col;
+        std::string msg;
+        
+        initscr();
+        getmaxyx(stdscr,row,col);
+        raw();
+        noecho();
+
+        this->homepage();
+        this->printw(row-2,col/2,
+                     "Page: 0/" + this->num2str(this->pages()));
+        //refresh();
+
+        Page *p = this->begin;
+        
+        
+        while(this->end != p){
+            ch=getch();
+            switch(ch){
+                case 'q':
+                    p=this->end;
+                    
+                    break;
+                case 'H':
+                    p = this->begin;
+                    break;
+                case 'E':
+                    while(p->next != this->end){
+                        p=p->next;
+                    }
+                    break;
+                case 'k':
+                    if(this->begin != p){
+                        p = p->prev;
+                    }
+                    break;
+                case 'j':
+                default:
+                    p = p->next;
+                    break;
+            }
+            
+            clear();
+            if(this->begin == p){
+                this->homepage();
+                this->printw(row-2,col/2,
+                             "Page: 0/" + this->num2str(this->pages()));
+            } else if(this->end != p){
+                this->eachPage(p);
+                this->printw(row-2,col/2,
+                             "Page: " + this->num2str(p->num_of_pages()) +
+                             "/" + this->num2str(this->pages()));
+            }
+            
+            
+            
+        }
+        
+        clear();
+        //this->printw(row/2,col/2,"Orgp Done!");
+        //getch();
+        
+        echo();
+        endwin();
+        
+        std::cout << "Orgp Done!" << "\n";
     }
 
     std::string Org::author(){

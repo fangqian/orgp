@@ -25,6 +25,8 @@ namespace orgp{
         
         void scan(Org *org);
         
+        std::string cleanup(std::string line);
+        
         ~Scan();
         
         std::string srcfile();
