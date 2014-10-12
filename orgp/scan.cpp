@@ -24,7 +24,7 @@ namespace orgp{
         
         //std::ifstream src(this->srcfile());
         std::ifstream src;
-        src.open(this->srcfile());
+        src.open(this->srcfile().c_str(),std::ifstream::in);
         
         
         if (!src.is_open()) {
