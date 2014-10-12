@@ -63,10 +63,10 @@ namespace orgp{
         void inline printw( const int cur_line,const int cur_col,std::string msg );
         
     private:
-        std::string _author;
         std::string _title;
-        std::string _date;
+        std::string _author;
         std::string _email;
+        std::string _date;
         int _pages;
         Page *begin;
         Page *end;
@@ -98,9 +98,9 @@ namespace orgp{
         
         
     public:
-        int _num_of_pages;
         std::string _section;
         std::vector<std::string> _content;
+        int _num_of_pages;
         Page *prev;
         Page *next;
     };

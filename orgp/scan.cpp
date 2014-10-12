@@ -22,7 +22,10 @@ namespace orgp{
     
     void Scan::scan(Org *org){
         
-        std::ifstream src(this->srcfile());
+        //std::ifstream src(this->srcfile());
+        std::ifstream src;
+        src.open(this->srcfile());
+        
         
         if (!src.is_open()) {
             std::cout << "**Failed To Open File : " << this->srcfile() << std::endl;
